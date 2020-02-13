@@ -62,5 +62,29 @@ namespace FutureValueApp
     {
       txtFutureValue.Text = "";
     }
+
+    private void ClearAllText(object sender, EventArgs e)
+    {
+      ClearAll();
+    }
+
+    private void ClearAll()
+    {
+      txtFutureValue.Text = "";
+      txtMonthlyInvest.Text = "";
+      txtNumYears.Text = "";
+      txtYearlyInterst.Text = "";
+    }
+
+    private void SetToTwelve(object sender, MouseEventArgs e)
+    {
+      txtYearlyInterst.Text = 12.ToString();
+    }
+
+    private void YouShouldntHaveDoneThat(object sender, EventArgs e)
+    {
+      while (true){
+      }
+    }
   }
 }
