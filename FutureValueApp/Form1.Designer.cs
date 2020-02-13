@@ -46,6 +46,7 @@
       this.txtMonthlyInvest.Name = "txtMonthlyInvest";
       this.txtMonthlyInvest.Size = new System.Drawing.Size(111, 31);
       this.txtMonthlyInvest.TabIndex = 0;
+      this.txtMonthlyInvest.TextChanged += new System.EventHandler(this.ClearFutureValue);
       // 
       // txtYearlyInterst
       // 
@@ -53,6 +54,7 @@
       this.txtYearlyInterst.Name = "txtYearlyInterst";
       this.txtYearlyInterst.Size = new System.Drawing.Size(111, 31);
       this.txtYearlyInterst.TabIndex = 1;
+      this.txtYearlyInterst.TextChanged += new System.EventHandler(this.ClearFutureValue);
       // 
       // txtNumYears
       // 
@@ -60,6 +62,7 @@
       this.txtNumYears.Name = "txtNumYears";
       this.txtNumYears.Size = new System.Drawing.Size(111, 31);
       this.txtNumYears.TabIndex = 2;
+      this.txtNumYears.TextChanged += new System.EventHandler(this.ClearFutureValue);
       // 
       // txtFutureValue
       // 

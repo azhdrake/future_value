@@ -31,11 +31,7 @@ namespace FutureValueApp
         double monthlyInterest = yearlyInterest / 12 / 100;
 
         // preform the caculation one time for every month
-        double futureValue = 0;
-        for (int i = 0; i < months; i++)
-        {
-          futureValue = (futureValue + monthlyInvest) * (1 + monthlyInterest);
-        }
+        double futureValue = calcFutureValue(months, monthlyInvest, monthlyInterest);
 
         // Share the data with the user
         txtFutureValue.Text = futureValue.ToString("c");
@@ -43,13 +39,28 @@ namespace FutureValueApp
       }
       else
       {
-        MessageBox.Show("Please put in numbers for all the boxes.")
+        MessageBox.Show("Please put in numbers for all the boxes.");
       }
+    }
+
+    private double calcFutureValue(int months, double monthlyInvest, double monthlyInterest)
+    {
+      double futureValue = 0;
+      for (int i = 0; i < months; i++)
+      {
+        futureValue = (futureValue + monthlyInvest) * (1 + monthlyInterest);
+      }
+      return futureValue;
     }
 
     private void btnExit_Click(object sender, EventArgs e)
     {
       this.Close();
+    }
+
+    private void ClearFutureValue(object sender, EventArgs e)
+    {
+      txtFutureValue.Text = "";
     }
   }
 }
