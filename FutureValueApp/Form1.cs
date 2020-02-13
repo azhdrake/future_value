@@ -30,7 +30,6 @@ namespace FutureValueApp
         int months = numYears * 12;
         double monthlyInterest = yearlyInterest / 12 / 100;
 
-        // preform the caculation one time for every month
         double futureValue = calcFutureValue(months, monthlyInvest, monthlyInterest);
 
         // Share the data with the user
@@ -45,6 +44,7 @@ namespace FutureValueApp
 
     private double calcFutureValue(int months, double monthlyInvest, double monthlyInterest)
     {
+      // preform the caculation one time for every month
       double futureValue = 0;
       for (int i = 0; i < months; i++)
       {
@@ -60,6 +60,7 @@ namespace FutureValueApp
 
     private void ClearFutureValue(object sender, EventArgs e)
     {
+      // It clear the value
       txtFutureValue.Text = "";
     }
 
@@ -70,6 +71,7 @@ namespace FutureValueApp
 
     private void ClearAll()
     {
+      // It clear ALL the value
       txtFutureValue.Text = "";
       txtMonthlyInvest.Text = "";
       txtNumYears.Text = "";
@@ -78,11 +80,13 @@ namespace FutureValueApp
 
     private void SetToTwelve(object sender, MouseEventArgs e)
     {
+      // Make it 12. Why? Why not?
       txtYearlyInterst.Text = 12.ToString();
     }
 
     private void YouShouldntHaveDoneThat(object sender, EventArgs e)
     {
+      // You Shouldn't Have Done That.
       while (true){
       }
     }
