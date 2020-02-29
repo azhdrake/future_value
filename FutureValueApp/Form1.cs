@@ -19,13 +19,18 @@ namespace FutureValueApp
 
     private void btnCalc_Click(object sender, EventArgs e)
     {
-      // Data validation
-      bool validMonthly = Double.TryParse(txtMonthlyInvest.Text, out double monthlyInvest);
-      bool validYearly = Double.TryParse(txtYearlyInterst.Text, out double yearlyInterest);
-      bool validNumYears = int.TryParse(txtNumYears.Text, out int numYears);
-
-      if (validMonthly && validYearly && validNumYears)
+      // Data validation. 
+      /*      try {
+              try
+              {
+                try
+                {*/
+      if (validateData())
       {
+        double monthlyInvest = Double.Parse(txtMonthlyInvest.Text);
+        double yearlyInterest = Double.Parse(txtYearlyInterst.Text);
+        int numYears = int.Parse(txtNumYears.Text);
+
         // Convert to months
         int months = numYears * 12;
         double monthlyInterest = yearlyInterest / 12 / 100;
@@ -36,10 +41,85 @@ namespace FutureValueApp
         txtFutureValue.Text = futureValue.ToString("c");
         txtMonthlyInvest.Focus();
       }
-      else
-      {
-        MessageBox.Show("Please put in numbers for all the boxes.");
+            /*throw new Exception("Unknown Error That We Definately Didn't Code In Here Intentionally");
+          }
+          catch (OverflowException) {
+            MessageBox.Show("Enter a smaller number", "Error");
+          }
+        }
+        catch (FormatException) {
+          MessageBox.Show("Please enter only numbers", "Error");
+        }
       }
+      catch (Exception ex)
+      {
+        MessageBox.Show(ex.Message + "\n" + ex.GetType() + "\n" + ex.StackTrace, "Error");
+      } */
+    }
+
+    private bool validateData()
+    {
+      // checking the monthly invest field
+      if(!IsPresent(txtMonthlyInvest.Text, "Monthly Investment") || !IsDecimal(txtMonthlyInvest.Text, "Monthly Investment") || !IsWithinRange(txtMonthlyInvest.Text, "Monthly Investment", 1, 1000))
+      {
+        return false;
+      }
+      // checking the yearly intrest field
+      else if (!IsPresent(txtYearlyInterst.Text, "Yearly Invest Rate") || !IsDecimal(txtYearlyInterst.Text, "Yearly Invest Rate") || !IsWithinRange(txtYearlyInterst.Text, "Yearly Invest Rate", 1, 20))
+      {
+        return false;
+      }
+      // Checking the number of years field
+      else if (!IsPresent(txtNumYears.Text, "Number of Years") || !IsDecimal(txtNumYears.Text, "Number of Years") || !IsWithinRange(txtNumYears.Text, "Number of Years", 0, 100))
+      {
+        return false;
+      }
+      else { return true; }
+    }
+
+    private bool IsPresent(string value, string field)
+    {
+      // Makes sure something is actually there.
+      if (!String.IsNullOrWhiteSpace(value))
+      {
+        return true;
+      }
+      MessageBox.Show(field + " field is empty. Rectify this.");
+      return false;
+    }
+
+    private bool IsDecimal(string value, string field)
+    {
+      // These all do exactally what they say on the tin and I ain't commenting them all.
+      double Imnotusingthis;
+      if (Double.TryParse(value, out Imnotusingthis))
+      {
+        return true;
+      }
+      MessageBox.Show(field + " field is not a number. Rectify this.");
+      return false;
+    }
+
+    private bool IsInt32(string value, string field)
+    {
+      Int32 Imnotusingthis;
+      if (Int32.TryParse(value, out Imnotusingthis))
+      {
+        return true;
+      }
+      MessageBox.Show(field + " field is not a whole number. Rectify this.");
+      return false;
+    }
+
+    private bool IsWithinRange(string value, string field, decimal minValue, decimal maxValue)
+    {
+      decimal valueNum = Decimal.Parse(value);
+      if (valueNum < minValue || valueNum > maxValue)
+      {
+        MessageBox.Show(field + " field is outside of range " + minValue.ToString()+ " - " + maxValue.ToString() + ". Rectify this.");
+        return false;
+      }
+      return true;
     }
 
     private double calcFutureValue(int months, double monthlyInvest, double monthlyInterest)
@@ -78,17 +158,5 @@ namespace FutureValueApp
       txtYearlyInterst.Text = "";
     }
 
-    private void SetToTwelve(object sender, MouseEventArgs e)
-    {
-      // Make it 12. Why? Why not?
-      txtYearlyInterst.Text = 12.ToString();
-    }
-
-    private void YouShouldntHaveDoneThat(object sender, EventArgs e)
-    {
-      // You Shouldn't Have Done That.
-      while (true){
-      }
-    }
   }
 }

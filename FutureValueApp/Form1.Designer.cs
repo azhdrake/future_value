@@ -55,7 +55,6 @@
       this.txtYearlyInterst.Name = "txtYearlyInterst";
       this.txtYearlyInterst.Size = new System.Drawing.Size(111, 31);
       this.txtYearlyInterst.TabIndex = 1;
-      this.txtYearlyInterst.MouseClick += new System.Windows.Forms.MouseEventHandler(this.SetToTwelve);
       this.txtYearlyInterst.TextChanged += new System.EventHandler(this.ClearFutureValue);
       // 
       // txtNumYears
@@ -65,7 +64,6 @@
       this.txtNumYears.Size = new System.Drawing.Size(111, 31);
       this.txtNumYears.TabIndex = 2;
       this.txtNumYears.TextChanged += new System.EventHandler(this.ClearFutureValue);
-      this.txtNumYears.MouseHover += new System.EventHandler(this.YouShouldntHaveDoneThat);
       // 
       // txtFutureValue
       // 
@@ -75,7 +73,6 @@
       this.txtFutureValue.Size = new System.Drawing.Size(111, 31);
       this.txtFutureValue.TabIndex = 3;
       this.txtFutureValue.TabStop = false;
-      this.txtFutureValue.MouseLeave += new System.EventHandler(this.ClearAllText);
       // 
       // btnCalc
       // 
